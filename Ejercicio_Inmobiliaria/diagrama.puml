@@ -1,0 +1,67 @@
+@startuml
+class Inmobiliaria{
+    private Map<Inmueble> lista_inmuelbes;
+    public void agregar_inmueble();
+    public void mostrar_inmuebles();
+    public void mostrar_inmueble_pedido(Integer identificador);
+
+}
+
+abstract class Inmueble{
+    private int id;
+    private DatosCatastrales datos_cat;
+    private Ambientes ambientes;
+    privvate Contacto contacto;
+    private Boolean conectado_al_gas;
+    private Boolean infraestructura_cloacal;
+
+    public void mostrar_cualidades();
+}
+class DatosCatastrales{
+    private String provincia;
+    private String barrio;
+    private String nombre_calle;
+    private Integer altura;
+    private String cod_postal;
+    private Boolean barrio_privado;
+
+    public void mostrar_datoscat();
+}
+class Ambientes{
+    private Integer cantidad;
+    private String tipo;
+    private String dimensiones;
+    private Boolean son_luminosos;
+    public void mostrar_amb();
+}
+class Contacto{
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String mail;
+    private String observacion;
+
+    public void mostrar_contacto();
+}
+
+class Departamento {
+    private Integer piso;
+    private String num_letra;
+    private Boolean pet_friendly;
+        public void mostrar_cualidades();
+
+}
+class Casa {
+    private Boolean tiene_quincho;
+    private Boolean tiene_pileta;
+        public void mostrar_cualidades();
+
+}
+Inmueble <|--Casa
+Inmueble <|-- Departamento
+Inmueble *-- Ambientes
+Inmueble *-- Contacto
+Inmueble *-- DatosCatastrales
+
+
+@enduml

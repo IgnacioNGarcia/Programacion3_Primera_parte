@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Dron{
+    Herramienta_accionable herramienta;
+    private Double peso;
+    private Double tolerancia;
+    private Double velocidad;
+    private Double altura;
+
+
+    public Double getPeso();
+    public Double getTolerancia();
+    private String mostrar_herramienta();
+    public Double getVelocidad();
+}
+abstract class Herramienta_accionable{
+    abstract Double getPeso();
+    abstract String tipo_Herramienta();
+}
+class Sensor{
+    public Double getPeso(): Double
+    public String tipo_Herramienta(): String
+
+
+}
+class Taser{
+    public Double getPeso(): Double
+    public String tipo_Herramienta(): String
+
+
+}
+class Brazo_robotico{
+    public Double getPeso(): Double
+    public String tipo_Herramienta(): String
+
+
+}
+Herramienta_accionable<|--Sensor
+Herramienta_accionable<|--Taser
+Herramienta_accionable<|--Brazo_robotico
+
+
+
+@enduml

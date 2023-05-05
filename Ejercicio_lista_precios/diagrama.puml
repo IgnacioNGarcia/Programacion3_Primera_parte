@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Articulo{
+    private String nombre;
+    private Double costo_produccion;
+    private String observacion;
+
+
+}
+class Lista_Precios{
+    private String nombre;
+    private String vigencia;
+    private enum tipo_lista;
+    private String tipo_de_articulos;
+    private Arraylist<Articulo> lista_articulos;
+
+    public void agregar_articulo();
+    public void mostrar_precios();
+    public Double getPorcentajeDeAumento(); //Con el enum saco esto Hoy hay dos listaspero mañana capaz mas.
+
+    }
+Lista_Precios *-- Articulo
+@enduml

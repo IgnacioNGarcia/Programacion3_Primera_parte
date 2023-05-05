@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Vehiculo{
+    private Arraylist<Objeto> carga_vehiculo;
+    private Arraylist<String> objetos_permitidos;
+    private cargaMaxima;
+    public abstract void cargar(Objeto obj);
+    public abstract void listarItems();
+}
+class Camioneta{
+
+}
+class Auto{
+
+}
+abstract class Objeto{
+    descripción: String
+    dimensiones: Integer
+    id: Integer
+
+}
+class comoda{
+    superficie: Integer
+    cant_cajones: Integer
+}
+class Heladera implements Electrico{
+    tiene_freezer: Boolean
+}
+class Lavarropa implements Electrico{
+    revoluciones_centrifugado: Integer
+}
+class Televisor implements Electrico{
+    +es_led: Boolean
+    +es_lcd: Boolean
+    +es_smart: Boolean
+}
+class Bicicleta{
+    tamaño_rodado: Integer
+    es_electrica: Boolean
+    cant_cambios: Integer
+}
+
+interface Electrico{
+    +getVoltaje(): Integer
+}
+
+exception Vehiculolleno{
+
+}
+exception Nocorrespondeobjeto{
+}
+
+Objeto <|-- Bicicleta
+Objeto <|-- Heladera
+Objeto <|-- comoda
+Objeto <|-- Lavarropa
+Objeto <|-- Televisor
+Vehiculo <|--Camioneta
+Vehiculo <|--Auto
+@enduml

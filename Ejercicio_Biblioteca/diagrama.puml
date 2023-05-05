@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Biblioteca{
+    Hashmap<Libro> libros_biblio;
+
+    public void consulta_disponibilidad(Libro libro);
+    public void agregar_libro();
+    public void prestar_libro(Persona persona, Integer identificador);
+}
+class Persona{
+    private String nombre;
+    private String mail;
+    Arraylist<Libro> libros_prestados;
+    public void devolver_libro(Biblioteca biblio, Libro libro);
+}
+class Libro{
+    private Integer id;
+    private String titulo;
+    private Integer cant_capitulos;
+    private Boolean prestado;
+    private Persona persona_que_tomo_prestado;
+
+    public Integer get_dias_de_prestamo();
+
+
+}
+class Libro_informatica{
+    public Integer get_dias_de_prestamo();
+}
+class Libro_filosofia{
+ public Integer get_dias_de_prestamo();
+ }
+
+class Libro_matematica{
+ public Integer get_dias_de_prestamo();
+}
+
+Libro <|-- Libro_filosofia
+Libro <|-- Libro_matematica
+Libro <|-- Libro_informatica
+Biblioteca *-- Libro
+Biblioteca *-- Persona
+@enduml

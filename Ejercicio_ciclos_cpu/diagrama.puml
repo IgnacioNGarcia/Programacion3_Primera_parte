@@ -1,0 +1,76 @@
+@startuml
+class SO{
+Integer ciclos_CPU
+Tareas tareas Arraylist<Tareas>
+Algoritmo algoritmos Map<Algoritmo>
+agregar_tarea(Tarea tarea)
+eliminar_tarea()
+conocer_ciclo_actual()
+}
+
+abstract class Tareas{
+-nombre
+-tiempo_est_ejecucion
+-prioridad
+
++getters y setters()
++es_de_sistema()
++equals()
++hashcode()
+}
+class Tarea_usuario{
+GetterySetterConLogica();
+}
+class Tarea_sistema{
+GetterySetterConLogica();
+}
+
+
+abstract class Algoritmo{
++abstract ArrayList<Tarea> reacomodar_lista(ArrayList<Tarea> tareas)
++abstract ejecutar_algoritmo(ArrayList<Tarea> tareas, SO sit_op_para_actualizar_ciclos);
+}
+class Alternado{
+
++ArrayList<Tarea> reacomodar_lista(ArrayList<Tarea> tareas)
++void ejecutar_algoritmo(ArrayList<Tarea> tareas, SO sit_op_para_actualizar_ciclos);
+}
+class Secuencial{
++ArrayList<Tarea> reacomodar_lista(ArrayList<Tarea> tareas)
++void ejecutar_algoritmo(ArrayList<Tarea> tareas, SO sit_op_para_actualizar_ciclos);
+}
+class Prioritario{
++ArrayList<Tarea> reacomodar_lista(ArrayList<Tarea> tareas)
++void ejecutar_algoritmo(ArrayList<Tarea> tareas, SO sit_op_para_actualizar_ciclos);
+}
+
+
+
+note left of Tareas::es_de_sistema
+    lo voy a usar para acomodar con el alternado y secuencial
+end note
+
+
+note top of Algoritmo: Dentro de ejecutar_algoritmo lo primero que se hace es reacomodar\n la lista en todas las clases hijito.
+note right of Tareas:Cantidad de cicloscpu
+note top of Alternado:Te separa la lista en las de sist y user\n y despues te retornauna lista alternada\n para ejecutar el algo
+
+class invalid_user_priority_exception<< (E,red) >>{
+}
+class invalid_system_priority_exception<< (E,red) >>{
+}
+
+Tareas<|--Tarea_sistema
+Tareas<|--Tarea_usuario
+
+Algoritmo<|--Alternado
+Algoritmo<|--Secuencial
+Algoritmo<|--Prioritario
+
+SO *-- Tareas
+SO *-- Algoritmo
+
+Tarea_usuario o-- invalid_user_priority_exception
+Tarea_sistema o-- invalid_system_priority_exception
+
+@enduml

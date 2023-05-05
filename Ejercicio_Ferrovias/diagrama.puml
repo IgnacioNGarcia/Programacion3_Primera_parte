@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Deposito{
+
+private Arraylist trenes_armados;
+private Arraylist locomotoras_para_agregar;
+public Boolean necesita_conductor_experimentado();
+}
+
+class Tren{
+private Arraylist locomotoras
+private Arraylist vagones
+
+public void agregar_locomotora(Locomotora locomotora);
+public Integer contar_max_pasajeros();
+public Integer contar_vagones_livianos();
+public Double get_vel_maxima();
+public Boolean es_eficiente_la_formacion();
+public Boolean se_puede_mover();
+public Double get_arrastre_util_total();
+public Double get_peso_maximo_vagones();
+public Double peso_faltante_para_moverse();
+public Double es_complejo();
+}
+
+class Locomotora{
+    private Double peso;
+    private Double peso_arrastre_max;
+    private Double vel_max;
+
+    public Double get_arrastre_util();
+    public get_velocidad_maxima_posible();
+    public Boolean es_eficiente();
+}
+
+abstract class Vagones{
+    private Double peso_maximo;
+
+    public Boolean es_liviano();
+}
+note left of Vagones: El getter del peso maximo va a variar en cada vagon \n dependiendo del tipo
+class Vagon_pasajeros{
+    private Double largo;
+    private Double ancho_util;
+
+    public Integer get_cant_max_de_pasajeros();
+    public void agregar_pasajero(); //
+}
+
+note right of Vagon_pasajeros: Tirar excepción si no es \n un pasajero lo que meto.\n o si supero el peso max.
+
+class Vagon_carga{
+
+}
+
+Vagones <|-- Vagon_carga
+Vagones <|-- Vagon_pasajeros
+Tren *-- Vagones
+Tren *-- Locomotora
+@enduml

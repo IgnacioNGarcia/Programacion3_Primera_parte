@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Centro_estudios{
+
+}
+class Opcion_educacional{
+}
+class Materia{
+}
+class Curso{
+}
+interface Certificados{
+}
+class Charla_informativa{
+}
+class Charla_presencial{
+}
+class Charla_virtual{
+}
+
+
+class Persona{
+}
+class Inscriptos{
+}
+class Alumnos{
+}
+class Ingresantes{
+}
+class Docente{
+}
+@enduml
